@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chef It | Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="chef-home">
+  <div class="sidebar">
+    <h1 class="logo">Chef It</h1>
+    <nav class="menu">
+      <a href="#">Appetizers</a>
+      <a href="#">Main Meals</a>
+      <a href="#">Desserts</a>
+    </nav>
+  </div>
+
+  <div class="main-content">
+    <div class="recipe-grid">
+      {% for recipe in recipes %}
+      <div class="recipe-card">
+        <img src="{{ url_for('static', filename='images/placeholder.jpg') }}" alt="Recipe Image">
+        <div class="recipe-meta">
+          <span class="tag">{{ recipe.category or "Dinner" }}</span>
+          <h2>{{ recipe.title }}</h2>
+          <p>{{ recipe.instructions[:100] }}...</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>
