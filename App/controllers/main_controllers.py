@@ -38,7 +38,6 @@ def login_action():
         token = create_access_token(identity=str(user.id))  # ✅ serialize by ID
         response = redirect(url_for("main_routes.home"))
         set_access_cookies(response, token)
-        flash("Login successful")
         return response
     else:
         flash("Invalid username or password")
